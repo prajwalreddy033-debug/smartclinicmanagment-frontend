@@ -276,9 +276,9 @@ const AdminLogin = () => {
             <div className="mt-6 pt-4 border-t border-[#E8E6F0] flex items-center justify-between text-[11px] text-[#777789]">
               <span className="flex items-center gap-1.5 text-emerald-600 font-semibold">
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                Database Online (MySQL 8)
+                Cloud Database Online (Aiven MySQL 8)
               </span>
-              <span>Port: 8070</span>
+              <span className="text-emerald-600 font-medium">Render Backend Live</span>
             </div>
           </div>
         </div>

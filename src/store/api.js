@@ -1,8 +1,19 @@
 import axios from 'axios'
 
+const LIVE_RENDER_API = 'https://smartclinicmanagment-backend.onrender.com/api/v1'
+
 const getBaseUrl = () => {
-  let url = import.meta.env.VITE_API_URL || 'http://localhost:8070/api/v1'
-  url = url.trim().replace(/\/+$/, '')
+  let envUrl = import.meta.env.VITE_API_URL
+
+  // If running in production (Vercel) or placeholder was entered, use live Render backend
+  if (!envUrl || envUrl.includes('YOUR-RENDER-BACKEND-URL') || envUrl.includes('<')) {
+    if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost')) {
+      return LIVE_RENDER_API
+    }
+    return 'http://localhost:8070/api/v1'
+  }
+
+  let url = envUrl.trim().replace(/\/+$/, '')
   if (!url.endsWith('/api/v1')) {
     url += '/api/v1'
   }
